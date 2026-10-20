@@ -1,5 +1,396 @@
 <!DOCTYPE html>
+<html lang<!DOCTYPE html>
 <html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff1f6">
+<title>Heti takarításom ♡</title>
+
+<style>
+:root {
+  --pink: #df82a6;
+  --pink-dark: #b9547c;
+  --pink-light: #ffe4ef;
+  --cream: #fffaf5;
+  --green: #8caa96;
+  --text: #674957;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px 14px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: linear-gradient(160deg, #fff1f6, #fffaf1 55%, #f5f2ff);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+main {
+  max-width: 520px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  padding: 14px 8px 22px;
+}
+
+.flower {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 29px;
+  line-height: 1.25;
+  margin: 0 0 10px;
+  color: var(--pink-dark);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #987d8b;
+  margin: 0;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.day {
+  border: 1px solid #f3d5e1;
+  border-radius: 14px;
+  padding: 12px 3px;
+  background: rgba(255,255,255,.85);
+  color: #956b7d;
+  font-size: 13px;
+  box-shadow: 0 3px 9px #b76d8510;
+  transition: transform .15s, background .15s;
+}
+
+.day:active { transform: scale(.96); }
+
+.day.active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+  box-shadow: 0 4px 12px #df82a645;
+  font-weight: bold;
+}
+
+.card {
+  background: rgba(255,255,255,.94);
+  border: 1px solid #f7e3eb;
+  border-radius: 23px;
+  padding: 20px 17px;
+  margin: 14px 0;
+  box-shadow: 0 8px 25px #9f718410;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 {
+  color: var(--pink-dark);
+  font-size: 22px;
+  margin: 0;
+}
+
+.heart {
+  font-size: 25px;
+}
+
+.progress-label {
+  font-size: 13px;
+  color: #9a8190;
+  margin: 12px 0 9px;
+}
+
+.track {
+  height: 11px;
+  background: #fbe7ef;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #e9a0bd, #ce79a0);
+  transition: width .25s;
+}
+
+#message {
+  background: #fff3f7;
+  border-radius: 13px;
+  text-align: center;
+  padding: 11px 8px;
+  margin-top: 13px;
+  font-size: 13px;
+  color: #a45e7c;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #a47589;
+  margin: 23px 0 4px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 3px;
+  border-bottom: 1px solid #f7edf1;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.task:last-child { border-bottom: 0; }
+
+.task input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 23px;
+  height: 23px;
+  margin: 0;
+  border: 2px solid #e8b6ca;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.task input:checked {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.task input:checked::after {
+  content: "✓";
+  display: block;
+  color: white;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.task.done span {
+  text-decoration: line-through;
+  color: #b8a8b0;
+}
+
+.footer {
+  text-align: center;
+  color: #a38a97;
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 8px 12px 18px;
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: 25px; }
+  .day { font-size: 12px; }
+  .card { padding: 17px 13px; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <header>
+    <div class="flower">🌷 🧹 🌷</div>
+    <h1>Heti takarításom</h1>
+    <p class="subtitle">Apró lépések, szeretettel gondozott otthon ♡</p>
+  </header>
+
+  <div class="days" id="days"></div>
+
+  <section class="card">
+    <div class="card-top">
+      <h2 id="heading">Hétfő</h2>
+      <span class="heart">💗</span>
+    </div>
+
+    <p class="progress-label" id="count"></p>
+    <div class="track">
+      <div class="bar" id="bar"></div>
+    </div>
+
+    <div id="message">🌸 Minden apró lépés számít!</div>
+
+    <p class="task-title">♡ Mindennapi feladatok</p>
+    <div id="fixedTasks"></div>
+
+    <p class="task-title">✿ Mai kis extra feladatok</p>
+    <div id="extraTasks"></div>
+  </section>
+
+  <p class="footer">
+    🌸 Lassan is haladhatsz, a lényeg, hogy haladj!<br>
+    💕 A pipáid ezen az eszközön mentődnek.
+  </p>
+</main>
+
+<script>
+const names = [
+  "Hétfő", "Kedd", "Szerda", "Csütörtök",
+  "Péntek", "Szombat", "Vasárnap"
+];
+
+const fixed = [
+  "Ágy bevetése",
+  "Szellőztetés",
+  "Mosogatás",
+  "Konyhapult letörlése",
+  "10 perc rendrakás"
+];
+
+const extras = [
+  ["Mosdó áttörlése", "Törölközők rendezése"],
+  ["Por törlése", "Szemét ellenőrzése"],
+  ["Porszívózás", "Növények ellenőrzése"],
+  ["Tükör letörlése", "Konyha rendbetétele"],
+  ["Felmosás egy kisebb részen", "Hűtő gyors átnézése"],
+  ["Egy polc rendbetétele", "Takarók rendezése"],
+  ["Következő hét előkészítése",
+   "Kedvenc helyiség rendbetétele"]
+];
+
+let day = 0;
+
+function weekKey() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return d.getFullYear() + "-" +
+    (d.getMonth() + 1) + "-" + d.getDate();
+}
+
+const key = "mimi-clean-" + weekKey();
+let data = {};
+
+try {
+  data = JSON.parse(localStorage.getItem(key) || "{}") || {};
+} catch (e) {
+  data = {};
+}
+
+function defaults(i) {
+  return [...fixed, ...extras[i]].map(text => ({
+    text,
+    done: false
+  }));
+}
+
+function save() {
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (e) {}
+}
+
+function escapeText(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
+}
+
+function render() {
+  document.getElementById("days").innerHTML =
+    names.map((n, i) =>
+      '<button type="button" class="day ' +
+      (i === day ? "active" : "") +
+      '" onclick="selectDay(' + i + ')">' +
+      n + '</button>'
+    ).join("");
+
+  document.getElementById("heading").textContent = names[day];
+
+  if (!data[day]) data[day] = defaults(day);
+
+  const list = data[day];
+
+  function taskHTML(t, i) {
+    return '<label class="task ' +
+      (t.done ? "done" : "") + '">' +
+      '<input type="checkbox" ' +
+      (t.done ? "checked" : "") +
+      ' onchange="toggle(' + i +
+      ',this.checked)">' +
+      '<span>' + escapeText(t.text) + '</span>' +
+      '</label>';
+  }
+
+  document.getElementById("fixedTasks").innerHTML =
+    list.slice(0, fixed.length).map(taskHTML).join("");
+
+  document.getElementById("extraTasks").innerHTML =
+    list.slice(fixed.length).map((t, i) =>
+      taskHTML(t, i + fixed.length)
+    ).join("");
+
+  const done = list.filter(t => t.done).length;
+  const total = list.length;
+  const percent = total ? Math.round(done / total * 100) : 0;
+
+  document.getElementById("count").textContent =
+    done + " / " + total + " feladat kész · " + percent + "%";
+
+  document.getElementById("bar").style.width = percent + "%";
+
+  let message = "🌸 Minden apró lépés számít!";
+
+  if (percent === 100) {
+    message = "🎉 Minden kész! Nagyon ügyes vagy! 💖";
+  } else if (percent >= 60) {
+    message = "✨ Már majdnem megvagy, csak így tovább!";
+  } else if (percent > 0) {
+    message = "💕 Szuper, már elkezdted! Büszke lehetsz magadra.";
+  }
+
+  document.getElementById("message").textContent = message;
+  save();
+}
+
+function selectDay(i) {
+  day = i;
+  render();
+}
+
+function toggle(i, value) {
+  data[day][i].done = value;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
