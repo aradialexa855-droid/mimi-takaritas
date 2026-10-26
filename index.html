@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -7,347 +6,125 @@
 <meta name="theme-color" content="#fff1f6">
 <title>Heti takarításom ♡</title>
 <style>
-:root {
-  --pink:#df82a6;
-  --dark:#a94e75;
-  --pale:#fff1f6;
-  --ink:#594653;
-  --green:#e5f0df;
-  --purple:#eee5fa;
-  --blue:#e4f1fc;
-  --yellow:#fff0d5;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  padding:14px;
-  color:var(--ink);
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  background:linear-gradient(145deg,#fff0f6,#fffaf1,#f4efff);
-}
-header {
-  text-align:center;
-  padding:18px 8px 22px;
-}
-h1 {
-  color:var(--dark);
-  font-family:Georgia,serif;
-  font-size:clamp(27px,7vw,42px);
-  margin:8px 0;
-}
-.subtitle { font-size:14px; }
-.decor { font-size:27px; }
-h2 {
-  font-family:Georgia,serif;
-  font-size:20px;
-  margin:0 0 14px;
-  color:var(--dark);
-}
-.panel {
-  background:#ffffffd9;
-  border:2px solid #f2c5d8;
-  border-radius:20px;
-  padding:16px;
-  margin:14px 0;
-  box-shadow:0 4px 14px #a94e7510;
-}
-.day {
-  background:#fffdfd;
-  border:1.5px solid #efd0df;
-  border-radius:16px;
-  margin:13px 0;
-  overflow:hidden;
-}
-.day h3 {
-  margin:0;
-  padding:12px;
-  background:#f9dfeb;
-  font-family:Georgia,serif;
-  font-size:19px;
-}
-.day:nth-child(2) h3 {background:#e9def8}
-.day:nth-child(3) h3 {background:#e3efdc}
-.day:nth-child(4) h3 {background:#ffedce}
-.day:nth-child(5) h3 {background:#dceefa}
-.day:nth-child(6) h3 {background:#f9dfeb}
-.day:nth-child(7) h3 {background:#e9def8}
-.tasks { padding:8px 13px 12px; }
-label.task {
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  padding:9px 0;
-  font-size:15px;
-  line-height:1.4;
-  border-bottom:1px dashed #f1e1e8;
-}
-label.task:last-child {border-bottom:0}
-input[type=checkbox] {
-  appearance:none;
-  flex-shrink:0;
-  width:22px;
-  height:22px;
-  margin:0;
-  border:2px solid #df82a6;
-  border-radius:7px;
-  background:white;
-  cursor:pointer;
-}
-input[type=checkbox]:checked {
-  background:#df82a6;
-  border-color:#df82a6;
-}
-input[type=checkbox]:checked::after {
-  content:"✓";
-  display:block;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  text-align:center;
-  line-height:18px;
-}
-.task:has(input:checked) span {
-  text-decoration:line-through;
-  color:#a69aa2;
-}
-.progress {
-  height:14px;
-  background:#f6e3ec;
-  border-radius:20px;
-  overflow:hidden;
-  margin:10px 0;
-}
-#bar {
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#eaa2c0,#bda5e8);
-  border-radius:20px;
-  transition:width .2s;
-}
-.stat {font-size:14px}
-button {
-  border:0;
-  border-radius:12px;
-  background:#f7dce8;
-  color:#81435f;
-  padding:10px 13px;
-  font-weight:bold;
-  font-size:14px;
-  cursor:pointer;
-}
-textarea {
-  width:100%;
-  min-height:100px;
-  border:1.5px solid #ecc7d8;
-  border-radius:12px;
-  background:#fffafb;
-  color:var(--ink);
-  padding:12px;
-  font:15px "Trebuchet MS",sans-serif;
-  resize:vertical;
-}
-footer {
-  text-align:center;
-  color:#9c6c84;
-  padding:20px 8px;
-  line-height:1.7;
-}
-.heart {color:#d96f9a}
-@media(min-width:700px) {
-  body {max-width:1000px;margin:auto;padding:24px}
-  .week {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .day {margin:0}
-  .bottom {display:grid;grid-template-columns:1fr 1fr;gap:12px}
-}
+:root{--pink:#df82a6;--dark:#9d466d;--ink:#49394a;--line:#efbfd4;--paper:#fffdfd}
+*{box-sizing:border-box}
+body{margin:0;padding:12px;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;background:linear-gradient(145deg,#fff0f6,#fffaf1 52%,#f5f0ff)}
+main{max-width:1120px;margin:auto}
+.hero{text-align:center;padding:10px 6px 16px}
+.hero .small{font-size:clamp(20px,4vw,30px)}
+h1{font:clamp(30px,6vw,54px) Georgia,serif;color:#7c233e;margin:7px 0}
+.subtitle{font:italic clamp(14px,2.5vw,22px) Georgia,serif}
+.panel{background:#ffffffd9;border:2px solid #efbfd4;border-radius:20px;padding:14px;margin:12px 0;box-shadow:0 4px 15px #b9547c12}
+h2{font: bold 21px Georgia,serif;color:var(--dark);margin:0 0 12px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.day{background:#fffdfd;border:2px solid var(--day-border,#efbfd4);border-radius:15px;overflow:hidden;min-width:0}
+.day h3{font: bold 17px Georgia,serif;text-align:center;background:var(--day-head,#f9dfeb);padding:10px 3px;margin:0}
+.tasks{padding:8px}
+.task{display:flex;align-items:flex-start;gap:7px;padding:7px 0;font-size:13px;line-height:1.35;border-bottom:1px dashed #f1e1e8;cursor:pointer}
+.task:last-child{border-bottom:0}
+input[type=checkbox]{appearance:none;flex:0 0 19px;width:19px;height:19px;margin:0;border:2px solid var(--day-border,#df82a6);border-radius:6px;background:#fff;cursor:pointer}
+input[type=checkbox]:checked{background:var(--day-border,#df82a6)}
+input[type=checkbox]:checked:after{content:"✓";display:block;color:white;font-weight:bold;text-align:center;line-height:15px}
+.task:has(input:checked) span{text-decoration:line-through;color:#a69aa2}
+.day:nth-child(1){--day-head:#f9d8e7;--day-border:#e98ab2}
+.day:nth-child(2){--day-head:#e9def8;--day-border:#b78bd0}
+.day:nth-child(3){--day-head:#e3efdc;--day-border:#91b88a}
+.day:nth-child(4){--day-head:#ffedce;--day-border:#e7b66d}
+.day:nth-child(5){--day-head:#dceefa;--day-border:#7db9e2}
+.day:nth-child(6){--day-head:#f9dfeb;--day-border:#e98ab2}
+.day:nth-child(7){--day-head:#e9def8;--day-border:#b78bd0}
+.day-art{text-align:center;font-size:31px;padding:5px 0 10px}
+.bottom{display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;gap:10px}
+.bottom .panel{margin:0;padding:12px}
+.bottom .task{font-size:14px}
+.progress{height:14px;background:#f6e3ec;border-radius:20px;overflow:hidden;margin:10px 0}
+#bar{height:100%;width:0;background:linear-gradient(90deg,#eaa2c0,#bda5e8);transition:width .2s}
+.stat{font-size:14px;line-height:1.5}
+.calendar-row{display:grid;grid-template-columns:75px 1fr;align-items:center;gap:5px;padding:5px 0;border-bottom:1px solid #f4e5ec;font-size:13px}
+.hearts{letter-spacing:2px;color:#d97ca4;word-break:break-word}
+textarea{width:100%;min-height:100px;border:1.5px solid #ecc7d8;border-radius:12px;background:#fffafb;color:var(--ink);padding:10px;font:14px "Trebuchet MS",sans-serif}
+button{border:0;border-radius:12px;background:#f7dce8;color:#81435f;padding:10px 13px;font-weight:bold;cursor:pointer}
+footer{text-align:center;padding:18px 8px;color:#95627d;line-height:1.7}
+@media(max-width:850px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){body{padding:8px}.week{grid-template-columns:1fr}.day h3{text-align:left;padding:11px 14px}.tasks{padding:8px 14px}.task{font-size:15px}.day-art{font-size:26px}.bottom{grid-template-columns:1fr}.panel{padding:12px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="decor">🌷 🧹 🌷</div>
-  <h1>Heti takarításom ♡</h1>
-  <div class="subtitle">Apró lépések, szeretettel gondozott otthon ♡</div>
-  <div class="decor">🧸 💐 🩷</div>
+<main>
+<header class="hero">
+<div class="small">🌷 🌸 🧸 🌸 🌷</div>
+<h1>Heti takarításom ♡</h1>
+<div class="subtitle">Apró lépések, szeretettel gondozott otthon ♡</div>
 </header>
 
 <section class="panel">
-  <h2>🌸 Heti haladásom</h2>
-  <div class="stat" id="count">0 feladat elvégezve</div>
-  <div class="progress"><div id="bar"></div></div>
-  <div class="stat" id="message">Kezdjük apró lépésekkel! ♡</div>
+<h2>♡ Heti haladásom</h2>
+<div class="stat" id="count">0 feladat elvégezve</div>
+<div class="progress"><div id="bar"></div></div>
+<div class="stat" id="message">Kezdjük apró lépésekkel! ♡</div>
 </section>
 
 <section class="panel">
-  <h2>🗓️ Heti naptáram</h2>
-  <div id="week" class="week"></div>
+<h2>🌷 Heti naptáram</h2>
+<div class="week" id="week"></div>
 </section>
 
+<div class="bottom">
 <section class="panel">
-  <h2>♡ Mindennapi állandó feladatok</h2>
-  <div id="daily" class="tasks"></div>
+<h2>🌸 Mindennapi állandó feladatok</h2>
+<div id="daily"></div>
+<div class="day-art">🛏️ 🧽 🧺 🌿</div>
 </section>
-
 <section class="panel">
-  <h2>🌼 Változó feladatok</h2>
-  <div id="extra" class="tasks"></div>
+<h2>🌼 Változó feladatok</h2>
+<div id="extra"></div>
+<div class="day-art">🫧 🌷 🪴</div>
 </section>
-
 <section class="panel">
-  <h2>📝 Jegyzeteim</h2>
-  <textarea id="notes" placeholder="Ide írhatod a heti terveidet, bevásárlólistádat... ♡"></textarea>
-  <p class="stat">A jegyzeted automatikusan mentődik ezen az eszközön. 🌷</p>
+<h2>💗 Heti naptáram</h2>
+<div id="mini"></div>
+<h2 style="margin-top:14px">Heti összesítés ♡</h2>
+<div class="stat" id="summary">Elvégzett feladatok: 0</div>
+<div class="progress"><div id="bar2" style="height:100%;width:0;background:#df82a6"></div></div>
+<div class="stat" id="weekMood">Ezen a héten: ♡ Jó úton!</div>
 </section>
-
-<footer>
-  <div class="decor">🌸 ♡ 🧸 ♡ 🌸</div>
-  <strong>Kis lépések, nagy változások!</strong>
-  <br>Nem kell tökéletesnek lennie. Elég, ha haladsz. 💗
-  <p><button id="reset">Új hét – pipák törlése</button></p>
-</footer>
-
+<section class="panel">
+<h2>Jegyzeteim ♡</h2>
+<textarea id="notes" placeholder="Bevásárlólista, tervek, emlékeztetők..."></textarea>
+<div class="day-art">🌷 🫖 💐</div>
+<div style="text-align:center;font:italic 16px Georgia,serif">Tiszta otthon = nyugodtabb napok ♡</div>
+</section>
+</div>
+<footer><div class="small">🌸 ♡ 🌷 ♡ 🌸</div><strong>Kis lépések, nagy változások!</strong><br>Nem kell tökéletesnek lennie. Elég, ha haladsz. 💗<br><button id="reset">Új hét – pipák törlése</button></footer>
+</main>
 <script>
-const days = [
-  {name:"Hétfő ♡", color:"pink", tasks:[
-    "Fürdőszoba tisztítása","Tükör, mosdó","WC tisztítása",
-    "Padló felmosása","Szemét levitele"
-  ]},
-  {name:"Kedd ♡", tasks:[
-    "Konyha takarítása","Pultok, tűzhely","Mikró, hűtő kívül",
-    "Mosogatás / gép","Padló felmosása"
-  ]},
-  {name:"Szerda ♡", tasks:[
-    "Nappali rendbetétele","Portörlés","Porszívózás",
-    "Polcok, bútorok","Padló felmosása"
-  ]},
-  {name:"Csütörtök ♡", tasks:[
-    "Hálószoba rendbetétele","Ágyhuzat cseréje",
-    "Szekrények kívül","Portörlés","Porszívózás"
-  ]},
-  {name:"Péntek ♡", tasks:[
-    "Előszoba rendbetétele","Cipők, kabátok",
-    "Ajtók, kilincsek","Padló porszívózása / felmosása",
-    "Szemét levitele"
-  ]},
-  {name:"Szombat ♡", tasks:[
-    "Ablakok, ha szükséges","Redőnyök, párkányok",
-    "Erkély / terasz","Nagyobb rendrakás","Szemét levitele"
-  ]},
-  {name:"Vasárnap ♡", tasks:[
-    "Általános rendrakás","Textíliák átnézése",
-    "Hűtő ellenőrzése","Kis javítások",
-    "Következő hét tervezése"
-  ]}
+const days=[
+{name:"Hétfő",art:"🛁",tasks:["Fürdőszoba tisztítása","Tükör, mosdó","WC","Padló felmosása","Szemét levitele"]},
+{name:"Kedd",art:"🍴",tasks:["Konyha takarítása","Pultok, tűzhely","Mikró, hűtő kívül","Mosogatás / gép","Padló felmosása"]},
+{name:"Szerda",art:"🛋️",tasks:["Nappali","Portörlés","Porszívózás","Polcok, bútorok","Padló felmosása"]},
+{name:"Csütörtök",art:"🛏️",tasks:["Hálószoba","Ágyhuzat csere","Szekrények kívül","Portörlés","Padló porszívózás / felmosás"]},
+{name:"Péntek",art:"👟",tasks:["Előszoba","Cipők, kabátok","Ajtók, kilincsek","Padló porszívózás / felmosás","Szemét levitele"]},
+{name:"Szombat",art:"🪟",tasks:["Ablakok (ha szükséges)","Redőnyök, párkányok","Erkély / terasz","Nagyobb rendrakás","Szemét levitele"]},
+{name:"Vasárnap",art:"🧺",tasks:["Általános rendrakás","Textíliák átnézése","Hűtő ellenőrzése","Kis javítások","Következő hét tervezése"]}
 ];
-
-const dailyTasks = [
-  "Ágyazás","Mosogatás, ha szükséges",
-  "Felületek letörlése","Szemét levitele",
-  "Ruhák rendbetétele","Padló rendben tartása",
-  "Szellőztetés","Növények meglocsolása"
-];
-
-const extraTasks = [
-  "Mélytisztítás (hűtő, sütő, mosógép)",
-  "Függöny mosása","Szőnyeg tisztítása",
-  "Párnák, takarók szellőztetése",
-  "Növények ápolása","Bevásárlás / készletek ellenőrzése"
-];
-
-function mondayKey() {
-  const d = new Date();
-  const day = (d.getDay()+6)%7;
-  d.setDate(d.getDate()-day);
-  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")
-    +"-"+String(d.getDate()).padStart(2,"0");
-}
-const weekKey = "mimi-clean-"+mondayKey();
-const noteKey = "mimi-clean-notes";
-
-function read(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value === null ? fallback : value;
-  } catch(e) { return fallback; }
-}
-function save(key, value) {
-  try { localStorage.setItem(key, value); } catch(e) {}
-}
-
-let checked = {};
-try { checked = JSON.parse(read(weekKey,"{}")) || {}; }
-catch(e) { checked = {}; }
-
-let total = 0;
-let done = 0;
-
-function addTask(container, text, id) {
-  total++;
-  const label = document.createElement("label");
-  label.className = "task";
-  const input = document.createElement("input");
-  input.type = "checkbox";
-  input.checked = !!checked[id];
-  const span = document.createElement("span");
-  span.textContent = text;
-  input.addEventListener("change", () => {
-    checked[id] = input.checked;
-    save(weekKey, JSON.stringify(checked));
-    update();
-  });
-  label.append(input,span);
-  container.appendChild(label);
-  if (input.checked) done++;
-}
-
-function render() {
-  const week = document.getElementById("week");
-  days.forEach((day,i) => {
-    const card = document.createElement("article");
-    card.className = "day";
-    const title = document.createElement("h3");
-    title.textContent = day.name;
-    const list = document.createElement("div");
-    list.className = "tasks";
-    day.tasks.forEach((task,j) =>
-      addTask(list,task,"day-"+i+"-"+j));
-    card.append(title,list);
-    week.appendChild(card);
-  });
-  dailyTasks.forEach((task,i) =>
-    addTask(document.getElementById("daily"),task,"daily-"+i));
-  extraTasks.forEach((task,i) =>
-    addTask(document.getElementById("extra"),task,"extra-"+i));
-  document.getElementById("notes").value = read(noteKey,"");
-  update();
-}
-
-function update() {
-  const inputs = document.querySelectorAll('input[type="checkbox"]');
-  done = [...inputs].filter(input => input.checked).length;
-  total = inputs.length;
-  document.getElementById("count").textContent =
-    done+" / "+total+" feladat elvégezve";
-  document.getElementById("bar").style.width =
-    (total ? done/total*100 : 0)+"%";
-  document.getElementById("message").textContent =
-    done===total ? "Elképesztő, minden kész! Megérdemled a pihenést! ♡" :
-    done>0 ? "Ügyesen haladsz! Minden apró lépés számít. 🌷" :
-    "Kezdjük apró lépésekkel! ♡";
-}
-
-document.getElementById("notes").addEventListener("input",e =>
-  save(noteKey,e.target.value));
-
-document.getElementById("reset").addEventListener("click",() => {
-  if(confirm("Töröljük az e heti pipákat?")) {
-    checked = {};
-    save(weekKey,"{}");
-    document.querySelectorAll('input[type="checkbox"]')
-      .forEach(input => input.checked=false);
-    update();
-  }
-});
-
-render();
+const daily=["Ágyazás","Mosogatás (ha nem gép)","Felületek letörlése","Szemét levitele","Ruhák rendbetétele","Padló rendben tartása","Légfrissítés (ablaknyitás)","Vízivás"];
+const extra=["Mélytakarítás (hűtő, sütő, mosógép)","Függöny mosása","Szőnyeg tisztítása","Párnák, takarók szellőztetése","Növények ápolása","Bevásárlás / készletek ellenőrzése","Egyéb: saját feladat"];
+function mondayKey(){let d=new Date();d.setDate(d.getDate()-(d.getDay()+6)%7);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+const key="mimi-clean-"+mondayKey(),noteKey="mimi-clean-notes";
+function read(k,f){try{let v=localStorage.getItem(k);return v===null?f:v}catch(e){return f}}
+function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+let checked={};try{checked=JSON.parse(read(key,"{}"))||{}}catch(e){}
+function task(parent,text,id){let l=document.createElement("label");l.className="task";let c=document.createElement("input");c.type="checkbox";c.checked=!!checked[id];let s=document.createElement("span");s.textContent=text;c.addEventListener("change",()=>{checked[id]=c.checked;save(key,JSON.stringify(checked));update()});l.append(c,s);parent.append(l)}
+days.forEach((d,i)=>{let card=document.createElement("article");card.className="day";let h=document.createElement("h3");h.textContent=d.name+" ♡";let list=document.createElement("div");list.className="tasks";d.tasks.forEach((t,j)=>task(list,t,"d"+i+"-"+j));let art=document.createElement("div");art.className="day-art";art.textContent=d.art;card.append(h,list,art);document.getElementById("week").append(card)});
+daily.forEach((t,i)=>task(document.getElementById("daily"),t,"daily"+i));
+extra.forEach((t,i)=>task(document.getElementById("extra"),t,"extra"+i));
+const mini=document.getElementById("mini");
+days.forEach((d,i)=>{let r=document.createElement("div");r.className="calendar-row";let n=document.createElement("div");n.textContent=d.name;let hearts=document.createElement("div");hearts.className="hearts";hearts.id="hearts"+i;hearts.textContent="♡ ♡ ♡ ♡ ♡";r.append(n,hearts);mini.append(r)});
+document.getElementById("notes").value=read(noteKey,"");
+document.getElementById("notes").addEventListener("input",e=>save(noteKey,e.target.value));
+function update(){let all=[...document.querySelectorAll('input[type="checkbox"]')],done=all.filter(c=>c.checked).length,total=all.length,pct=total?done/total*100:0;document.getElementById("count").textContent=done+" / "+total+" feladat elvégezve";document.getElementById("summary").textContent="Elvégzett feladatok: "+done+" / "+total;document.getElementById("bar").style.width=pct+"%";document.getElementById("bar2").style.width=pct+"%";document.getElementById("message").textContent=done===total?"Minden kész! Megérdemled a pihenést! ♡":done?"Ügyesen haladsz, minden apró lépés számít! 🌷":"Kezdjük apró lépésekkel! ♡";document.getElementById("weekMood").textContent=pct>=75?"Ezen a héten: ⭐ Kiváló!":pct>=25?"Ezen a héten: 💗 Jó úton!":"Ezen a héten: 🌸 Majd holnap is haladhatsz!";days.forEach((d,i)=>{let n=d.tasks.filter((t,j)=>checked["d"+i+"-"+j]).length;document.getElementById("hearts"+i).textContent="♥ ".repeat(n)+"♡ ".repeat(d.tasks.length-n)})}
+document.getElementById("reset").addEventListener("click",()=>{if(confirm("Töröljük az e heti pipákat?")){checked={};save(key,"{}");document.querySelectorAll('input[type="checkbox"]').forEach(c=>c.checked=false);update()}});
+update();
 </script>
 </body>
 </html>
